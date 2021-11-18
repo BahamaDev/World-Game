@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Game</title>
+    <link rel="stylesheet" href="worldgame.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" -->
+    <!-- integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div id="welcome-screen">
+
+            <p>
+                Welcome to World Game! Plese select the number of Rounds
+
+            </p>
+            <select name="round-selector" id="round-selector">
+                <option value="3">3 Rounds</option>
+                <option value="5">5 Rounds</option>
+                <option value="7">7 Rounds</option>
+
+
+            </select>
+
+            <button id="start-button">START</button>
+
+        </div>
+
+
+
+    
+        <div id="question-text"> Default Question?</div>
+
+        <div id="option-buttons" class="btn-grid">
+
+            <!-- <button class="answer-button">Option 1</button>
+            <button class="answer-button">Option 2</button>
+            <button class="answer-button">Option 3</button>
+            <button class="answer-button">Option 4</button> -->
+        </div>
+
+
+        <div id="stats-container">
+            <h4 id="question-counter"></h4>
+            <h4 id="right-counter"></h4>
+            <h4 id="wrong-counter"></h4>
+
+        </div>
+
+
+        
+        <button id="next-button">NEXT QUESTION</button>
+        <!-- <button id="test-button">TEST</button> -->
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="worldgame.js"></script>
+</body>
+
+</html>
