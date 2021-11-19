@@ -176,8 +176,9 @@ let roundSelector = document.getElementById("round-selector")
 let welcomeScreen = document.getElementById("welcome-screen")
 
 
-if (gameRounds === questionCount){
-endGame()
+if (gameRounds == questionCount) {
+    endGame()
+
 }
 // jQuery
 // ReactJS Angular VueJS
@@ -220,9 +221,9 @@ function generateOtherAnswers(correctAnswer, index) {
 //Main function that composes the Q&A content and send it to the DOM.
 function serveQuestion() {
     renderStats();
-   welcomeScreen.style.display = "none"
-   welcomeScreen.setAttribute("disabled", "disabled")
-    roundSelector.setAttribute('disabled',"disabled")
+    welcomeScreen.style.display = "none"
+    //    welcomeScreen.setAttribute("disabled", "disabled")
+    roundSelector.setAttribute('disabled', "disabled")
     roundSelector.style.display = "none"
     startButton.style.display = "none"
     nextButton.style.display = "none"
@@ -303,12 +304,17 @@ console.log(questionCount)
 
 
 
-function endGame(){
-    nextButton.style.display = "none"
+function endGame() {
+
     alert("game over")
+    let answerButtons = document.getElementsByClassName("answer-button")
 
+    for (let i = 0; i < answerButtons.length; i++) {
+        answerButtons[i].style.display = "none"
 
+    }
 
+   
 }
 
 //Video Aid: https://www.youtube.com/watch?v=R1S_NhKkvGA
