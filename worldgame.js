@@ -1,22 +1,98 @@
-const Program = {
-    init() {
-        Program.serveQuestion();
-    },
 
-    bindEvents() {
-        // Bind buttons click events...
-    },
 
-    serveQuestion() {
-        // ...
-    },
-};
+// const Program = {
+//     init() {
+//         Program.serveQuestion();
+//     },
 
+//     bindEvents() {
+//         // Bind buttons click events...
+//     },
+
+//     serveQuestion() {
+//         // ...
+//     },
+// };
+
+
+
+
+// Global vars
+let questionCount = 1
+let rightAnswerCount = 0
+let wrongAnswerCount = 0
+let questionCounter = document.getElementById('question-counter') // $('#'question-counter'')
+let rightCounter = document.getElementById('right-counter')
+let wrongCounter = document.getElementById('wrong-counter')
+let startButton = document.getElementById('start-button')
+let nextButton = document.getElementById("next-button")
+let roundSelector = document.getElementById("round-selector")
+let welcomeScreen = document.getElementById("welcome-screen")
+let infoForm = document.getElementById("info-form")
+let messageSection = document.getElementById('message-section')
+// let getRounds = document.getElementById('round-selector').value
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
 
 
-//List of country-capital pairs
+
+
+
+
+function bindEvents() {
+    // infoForm.addEventListener('submit', startGame)
+    startButton.addEventListener('click', serveQuestion)
+    // startButton.addEventListener('click', startGame)
+    nextButton.addEventListener("click", serveQuestion)
+    nextButton.style.display = "none"
+    console.log("bind Events Successful")
+}
+
+bindEvents()
+
+
+// Functions below muted for now. Will revisit round count after styling.
+// function startGame() {
+//     setGameRounds()
+//     gameControl()
+
+//     welcomeScreen.parentNode.removeChild(welcomeScreen)
+//     // startButton.parentNode.removeChild(startButton)
+//     getRounds.value = 0
+//     console.log("game start successfull")
+// }
+
+
+
+// function setGameRounds() {
+//     let rounds = 0
+//     console.log(getRounds)
+//     console.log(typeof(getRounds))
+//     if (getRounds == "3") { rounds = 3 }
+//     else if (getRounds == "5") { rounds = 5 }
+//     else {rounds = 7}
+//     console.log("game rounds set at " + rounds)
+//     return rounds
+// }
+
+
+
+// let newRounds = setGameRounds()
+// console.log("newRounds" + newRounds)
+
+
+
+// function gameControl() {
+//     console.log("newRounds" + newRounds)
+//     let rounds = newRounds
+//     while (rounds > questionCount) {
+//         serveQuestion();
+// endGame();
+
+//     }
+// }
+
+//Main list of Countries and their capitals.
 let countries = [
 
     {
@@ -134,6 +210,8 @@ let countries = [
 
 ]
 
+
+
 // Places the selected country-capital pair into a question sentence and answer.
 function getQuestionArr({ country, capital }) {
     return [
@@ -162,24 +240,7 @@ function getQuestionArr({ country, capital }) {
 }
 
 
-// Global vars
-let gameRounds = document.getElementById('round-selector').value
-let questionCount = 1
-let rightAnswerCount = 0
-let wrongAnswerCount = 0
-let questionCounter = document.getElementById('question-counter') // $('#'question-counter'')
-let rightCounter = document.getElementById('right-counter')
-let wrongCounter = document.getElementById('wrong-counter')
-let startButton = document.getElementById('start-button')
-let nextButton = document.getElementById('next-button')
-let roundSelector = document.getElementById("round-selector")
-let welcomeScreen = document.getElementById("welcome-screen")
 
-
-if (gameRounds == questionCount) {
-    endGame()
-
-}
 // jQuery
 // ReactJS Angular VueJS
 // [].find [].forEach [].map
@@ -196,14 +257,7 @@ function renderStats() {
 
 
 
-function bindEvents() {
-    startButton.addEventListener("click", serveQuestion); // $startButton.click(serveQuestion);
-    startButton.style.display = "display"
-    nextButton.addEventListener("click", serveQuestion)
-    nextButton.style.display = "none"
-}
 
-bindEvents();
 
 //Generates other incorrect answers: pulls other randoms answers from the original "countries" array, based on whether the correct answer is a captial or country.
 function generateOtherAnswers(correctAnswer, index) {
@@ -215,18 +269,24 @@ function generateOtherAnswers(correctAnswer, index) {
     else {
         otherAnswer = countries[otherAnswerIndex].capital
     }
+
+
     return otherAnswer
 }
 
+
+
 //Main function that composes the Q&A content and send it to the DOM.
 function serveQuestion() {
+    // console.log(`Rounds start ${setGameRounds()}`)
+    console.log(`question start ${questionCount}`)
     renderStats();
+    // startButton.style.display = "none"
     welcomeScreen.style.display = "none"
-    //    welcomeScreen.setAttribute("disabled", "disabled")
-    roundSelector.setAttribute('disabled', "disabled")
-    roundSelector.style.display = "none"
-    startButton.style.display = "none"
     nextButton.style.display = "none"
+    messageSection.innerHTML = ''
+
+
     questionCount += 1
 
     let countryIndex = Math.floor(Math.random() * countries.length + 1) // Picks a random country-capital pair from the countries array
@@ -238,11 +298,6 @@ function serveQuestion() {
 
     let correctAnswer = questionArr[questionIndex].answer; // Identifies the correct answer from the questionArr.
 
-    //selects other random answers to be populated to the buttons
-    // let otherAnswerIndex1 = Math.floor(Math.random() * questionArr.length)
-    // let otherAnswerIndex2 = Math.floor(Math.random() * questionArr.length)
-    // let otherAnswerIndex3 = Math.floor(Math.random() * questionArr.length)
-
     // Sets/show question
     questionText.innerHTML = questionArr[questionIndex].question; //pushes question to DOM
 
@@ -250,18 +305,15 @@ function serveQuestion() {
     let otherAnswer2 = generateOtherAnswers(correctAnswer, countryIndex);
     let otherAnswer3 = generateOtherAnswers(correctAnswer, countryIndex);
 
-    console.log(" other answer 1 " + otherAnswer1)
-    console.log(" other answer 2 " + otherAnswer2)
-    console.log(" other answer 3 " + otherAnswer3)
+
 
     answerArr.push(correctAnswer, otherAnswer1, otherAnswer2, otherAnswer3)//Pushes all created answers to an answerArr
-    console.log(answerArr)
+    // console.log(answerArr)
 
     // Shuffle answers
     answerArr = answerArr.sort((a, b) => 0.5 - Math.random()) // Shuffles the answers in the answerArr.
 
-    //Pushes answer values to relative buttons.
-    //let theChildren = optionButtons.children.innerHTML;
+
 
     // Show options
     optionButtons.innerHTML = '';
@@ -274,10 +326,14 @@ function serveQuestion() {
                 <button class="answer-button" onclick="wrongAnswer()">${item}</button>`
 
     )
-    // console.log(theChildren)
+
 
     return questionCount
 }
+
+
+console.log(questionCount)
+
 
 
 
@@ -285,18 +341,87 @@ function displayNextbutton() {
     nextButton.style.display = "block"
 }
 
+
+
+let rightMessage = [
+
+    {
+        message: "Great Job!",
+        animation: `<div style="width:100%;height:0;padding-bottom:98%;position:relative;"><iframe src="https://giphy.com/embed/WTEcIzqMRffRssYJjy" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>`,
+    },
+
+    {
+        message: "You are correct!",
+        animation: `<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/QuTOdlwvMl5lHKbpRC" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/eddie-murphy-coming-to-america-QuTOdlwvMl5lHKbpRC">via GIPHY</a></p>`
+    },
+
+
+    {
+        message: "Well Done!",
+        animation: `<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/l2Sqir5ZxfoS27EvS" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/loop-blue-celebration-l2Sqir5ZxfoS27EvS">via GIPHY</a></p>`
+    },
+
+    {
+        message: "Awesome!",
+        animation: `<div style="width:100%;height:0;padding-bottom:83%;position:relative;"><iframe src="https://giphy.com/embed/10YMf6TaREdW35MYJx" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/MickeyMouse-10YMf6TaREdW35MYJx">via GIPHY</a></p>`
+    }
+
+
+
+]
+
+let wrongMessage = [
+
+    {
+        message: "That answer was incorrect. Maybe another time.",
+        animation: `<div style="width:100%;height:0;padding-bottom:108%;position:relative;"><iframe src="https://giphy.com/embed/Wq9RLX06zRg4UM42Qf" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/chicken-bro-Wq9RLX06zRg4UM42Qf">via GIPHY</a></p>`
+    },
+
+    {
+        message: "Wrong Answer. You'll get the next one.",
+        animation: `<div style="width:100%;height:0;padding-bottom:134%;position:relative;"><iframe src="https://giphy.com/embed/eKrgVyZ7zLvJrgZNZn" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/eKrgVyZ7zLvJrgZNZn">via GIPHY</a></p>`
+    },
+
+    {
+        message: "Incorrect. Good try though.",
+        animation: `<div style="width:100%;height:0;padding-bottom:77%;position:relative;"><iframe src="https://giphy.com/embed/HKch5zpaH97ck" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/failure-mortal-HKch5zpaH97ck">via GIPHY</a></p>`
+    }
+]
+
+
+
+
+
+
+
+function generateMessage(messageArr) {
+    let messageIndex = Math.floor(Math.random() * messageArr.length)
+    console.log(messageIndex)
+    let messageSentence = messageArr[messageIndex].message
+    let messageImage = messageArr[messageIndex].animation
+    messageSection.innerHTML = `<div id="message-text">${messageSentence}</div>
+                        <div id="message-animation">${messageImage}</div>`
+    return
+
+}
+
 function rightAnswer() {
     rightAnswerCount += 1
-    alert("Right Answer")
     displayNextbutton()
+    generateMessage(rightMessage)
+
+
 }
+
+
 
 function wrongAnswer() {
     wrongAnswerCount += 1
-    alert("Wrong Answer")
     displayNextbutton()
+    generateMessage(wrongMessage)
 
 }
+
 
 console.log(questionCount)
 
@@ -305,16 +430,14 @@ console.log(questionCount)
 
 
 function endGame() {
-
     alert("game over")
     let answerButtons = document.getElementsByClassName("answer-button")
-
+    console.log("Game Over")
     for (let i = 0; i < answerButtons.length; i++) {
         answerButtons[i].style.display = "none"
-
     }
+    return
 
-   
 }
 
 //Video Aid: https://www.youtube.com/watch?v=R1S_NhKkvGA

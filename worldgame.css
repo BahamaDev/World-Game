@@ -49,3 +49,14 @@ outline: none;
     border-color: white;
    
 }
+
+#message-section{
+height: auto;
+    width:250px;
+}
+
+#message-animation{
+height: auto;
+width: 100px;
+
+}
