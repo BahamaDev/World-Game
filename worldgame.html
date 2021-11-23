@@ -1,43 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Game</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Game</title>
-    <link rel="stylesheet" href="worldgame.css">
-  
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="worldgame.css">
+
 </head>
 
 <body>
 
+<h1 class="world-game">World Game</h1>
 
-    <div class="container">
+    <section id="welcome-screen">
 
-        <div id="welcome-screen">
 
-            <p>
-                Welcome to World Game! Plese select the number of Rounds
-
+        <div id='welcome-text-container'>
+            <p id="welcome-text">
+                Welcome! <br>
+                Lets get Started! 
+                <!-- Plese select the number of Rounds -->
             </p>
 
-            <!-- <form method="GET" action="" id="info-form">
-                <select id="round-selector" name="round-selector">
+    
+        </div>
+                <button type="button" id="start-button">START</button>
+        <div id='welcome-image-container'>
 
-                    <option value="3">3</option>
-                    <option value="5">5</option>
-                    <option value="7">7</option>
-                </select>
-                
-            </form> -->
-
-            <button type="button" id="start-button">START</button>
-
+            <img id='welcome-image' src="/img/traveling-back-to-home-1677206.png" alt="" class="welcome-image">
 
         </div>
 
+    </section>
 
+
+
+    <div class="game-container">
 
 
         <div id="question-text"></div>
