@@ -25,14 +25,19 @@ let questionCounter = document.getElementById('question-counter') // $('#'questi
 let rightCounter = document.getElementById('right-counter')
 let wrongCounter = document.getElementById('wrong-counter')
 let startButton = document.getElementById('start-button')
+let ratioCount = document.getElementById('ratio-counter')
 let nextButton = document.getElementById("next-button")
 let roundSelector = document.getElementById("round-selector")
 let welcomeScreen = document.getElementById("welcome-screen")
 let infoForm = document.getElementById("info-form")
-let messageSection = document.getElementById('message-section')
+let messageSection = document.getElementById('message-modal')
+let messageText = document.getElementById('message-text')
+let messageAnim = document.getElementById('message-animation')
 // let getRounds = document.getElementById('round-selector').value
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
+let gameContainer = document.getElementById('game-container')
+
 
 
 
@@ -46,6 +51,8 @@ function bindEvents() {
     nextButton.addEventListener("click", serveQuestion)
     nextButton.style.display = "none"
     console.log("bind Events Successful")
+    gameContainer.style.display = "none";
+    messageSection.style.display = "none"
 }
 
 bindEvents()
@@ -250,9 +257,11 @@ function getQuestionArr({ country, capital }) {
 
 function renderStats() {
     //For Score Tracking
+    let ratioCal = Math.floor((rightAnswerCount / questionCount) * 100)
     questionCounter.innerHTML = `<p> Question: ${questionCount} <p>`
     rightCounter.innerHTML = `<p> Right: ${rightAnswerCount} <p>`
     wrongCounter.innerHTML = `<p> Wrong: ${wrongAnswerCount} <p>`
+    ratioCount.innerHTML = `Success Ratio: ${ratioCal}%`
 }
 
 
@@ -283,8 +292,10 @@ function serveQuestion() {
     renderStats();
     // startButton.style.display = "none"
     welcomeScreen.style.display = "none"
-    nextButton.style.display = "none"
-    messageSection.innerHTML = ''
+    messageText.innerHTML = ''
+    messageAnim.innerHTML =''
+    messageSection.style.display='none'
+    gameContainer.style.display = 'flex'
 
 
     questionCount += 1
@@ -395,12 +406,16 @@ let wrongMessage = [
 
 
 function generateMessage(messageArr) {
+    messageSection.style.display = 'block';
     let messageIndex = Math.floor(Math.random() * messageArr.length)
     console.log(messageIndex)
     let messageSentence = messageArr[messageIndex].message
     let messageImage = messageArr[messageIndex].animation
-    messageSection.innerHTML = `<div id="message-text">${messageSentence}</div>
-                        <div id="message-animation">${messageImage}</div>`
+    gameContainer.style.display = "none"
+    messageText.innerHTML = `${messageSentence}`
+    messageAnim.innerHTML = `${messageImage}`
+    let thatNode = messageAnim.childNodes[1]
+    thatNode.style.display = 'none'
     return
 
 }
@@ -408,6 +423,7 @@ function generateMessage(messageArr) {
 function rightAnswer() {
     rightAnswerCount += 1
     displayNextbutton()
+
     generateMessage(rightMessage)
 
 

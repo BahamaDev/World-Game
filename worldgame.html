@@ -6,14 +6,16 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="worldgame.css">
 
 </head>
 
 <body>
 
-<h1 class="world-game">World Game</h1>
+    <h1 class="world-game">World Game</h1>
 
     <section id="welcome-screen">
 
@@ -21,13 +23,13 @@
         <div id='welcome-text-container'>
             <p id="welcome-text">
                 Welcome! <br>
-                Lets get Started! 
+                Lets get Started!
                 <!-- Plese select the number of Rounds -->
             </p>
 
-    
+
         </div>
-                <button type="button" id="start-button">START</button>
+        <button type="button" id="start-button">START</button>
         <div id='welcome-image-container'>
 
             <img id='welcome-image' src="/img/traveling-back-to-home-1677206.png" alt="" class="welcome-image">
@@ -38,34 +40,34 @@
 
 
 
-    <div class="game-container">
+    <section id="game-container">
 
 
         <div id="question-text"></div>
 
-        <div id="option-buttons" class="btn-grid">
-
-
-        </div>
+        <div id="option-buttons" class="btn-grid"></div>
 
 
         <div id="stats-container">
-            <h4 id="question-counter"></h4>
-            <h4 id="right-counter"></h4>
-            <h4 id="wrong-counter"></h4>
+            <h4 id="question-counter" class="stats-info"></h4>
+            <h4 id="right-counter" class="stats-info"></h4>
+            <h4 id="wrong-counter" class="stats-info"></h4>
+            <h4 id="ratio-counter" class="stats-info"></h4>
 
         </div>
 
-        <div id="message-section"></div>
-
-
-        <button id="next-button">NEXT QUESTION</button>
+   
         <!-- <button id="test-button">TEST</button> -->
 
 
 
-    </div>
+    </section>
 
+    <section id="message-modal">
+    <div id="message-text"></div>
+    <div id="message-animation"></div>
+    <button id="next-button">NEXT QUESTION</button>
+    </section>
 
 
 
