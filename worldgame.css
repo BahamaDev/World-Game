@@ -12,20 +12,36 @@ flex-flow: column;
 justify-content: center;
 align-items: center;
 width: 100vw;
-height: 100vh;
-background-color: rgb(0, 157, 255);
-background-image: linear-gradient(to bottom right, rgb(0, 157, 255), rgb(164, 221, 247)  );
+height: 100%; 
+/* min-height: 500px; */
+/* background-color: rgb(0, 157, 255); */
+/* background-image: ; */
+/* background-image: linear-gradient(to bottom right, rgb(0, 157, 255), rgb(164, 221, 247)); */
+background-image: url("/img/landmark.png");
+
+ background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+
 }
 
 
 
 
+#game-header{
+border: 1px black solid;
+
+
+}
 
 
 
 
 #welcome-screen{
-background-color: rgb(232, 232, 232);
+background-color: rgba(255, 255, 255, 0.9);
 display: flex;
 max-width: 1100px;
 width: 60%;
@@ -51,12 +67,25 @@ background-color:rgb(255, 196, 0) ;
 color: white;
 width: 50%;
 min-height: 60px;
-border-radius: 5px;
+/* border-radius: 5px; */
 border: none;
 font-size: large;
 font-weight: bolder;
+transition-duration: .3s;
+}
+
+
+
+#start-button:hover{
+color: black;
+border-color: black;
+width: 53%;
+border: 1px black solid;
+
 
 }
+
+
 
 
 
@@ -67,6 +96,7 @@ align-items: center;
 justify-content: center;
 flex: 1 0 3;
 padding: 20px;
+z-index: 1;
 }
 
 
@@ -94,6 +124,8 @@ padding-top: 10px;
     padding: 10px;
     justify-content: center;
     align-items: center;
+    animation-name: get-in;
+    animation-duration: .5s;
     
 
 }
@@ -141,15 +173,15 @@ color: white;
 outline: none;
 border: none;
 padding-bottom: 0;
+transition-duration: .5s;
 }
 
 
 
 .answer-button:hover{
-    color: black;
-    outline: ;
-    
-    
+color: black;
+border-color: black;
+border: 2px black solid;
    
 }
 
@@ -184,6 +216,7 @@ padding-bottom: 0;
 
 
 
+
 #message-modal{
 background-color: rgb(97, 238, 207);
 display: flex;
@@ -193,26 +226,38 @@ min-height: 300px;
 flex-flow: column;
 justify-content: center;
 align-items: center;
+animation-name: get-in;
+animation-duration: .5s;
+
+}
+
+
+@keyframes get-in {
+from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 
 
-
-#message-text{
+#modal-text{
 height: auto;
     width:100%;
-    font-size: 40pt;
+    font-size: 50pt;
     font-weight: 600;
+    text-align: center;
 }
  
 
 
-#message-animation{
-    display: flex;
+#modal-animation{
+display: flex;
 border: 8px white solid;
 width: 60%;
+max-height: fit-content;
 object-fit: contain;
-margin: 0 auto;
+margin: 10px auto;
+pointer-events: none;
+
 }
 
 
@@ -222,15 +267,23 @@ background-color:rgb(255, 196, 0) ;
 color: white;
 width: 50%;
 min-height: 60px;
-border-radius: 5px;
+/* border-radius: 5px; */
 border: none;
 font-size: large;
 font-weight: bolder;
+margin: 10px auto;
+padding-top: 10px;
 
 }
 
 
 
+#next-button:hover{
+    color: black;
+border-color: black;
+border: 2px black solid;
+   
+}
 
 
 

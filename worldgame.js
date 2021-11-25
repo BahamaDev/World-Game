@@ -31,8 +31,8 @@ let roundSelector = document.getElementById("round-selector")
 let welcomeScreen = document.getElementById("welcome-screen")
 let infoForm = document.getElementById("info-form")
 let messageSection = document.getElementById('message-modal')
-let messageText = document.getElementById('message-text')
-let messageAnim = document.getElementById('message-animation')
+let messageText = document.getElementById('modal-text')
+let messageAnim = document.getElementById('modal-animation')
 // let getRounds = document.getElementById('round-selector').value
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
@@ -423,6 +423,7 @@ function generateMessage(messageArr) {
 function rightAnswer() {
     rightAnswerCount += 1
     displayNextbutton()
+    messageSection.style.backgroundColor = "rgb(97, 238, 207)";
 
     generateMessage(rightMessage)
 
@@ -435,6 +436,9 @@ function wrongAnswer() {
     wrongAnswerCount += 1
     displayNextbutton()
     generateMessage(wrongMessage)
+    messageSection.style.backgroundColor = "rgb(255, 61, 51)"; 
+    messageText.style.color = "white";
+    
 
 }
 
