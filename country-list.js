@@ -29,8 +29,6 @@ let countries = [
     { country: 'The Bahamas', capital: 'Nassau' },
 
 
-
-
     {
         country: "Bahrain", capital: 'Manama'
     },

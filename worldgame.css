@@ -228,10 +228,25 @@ transition-duration: .5s;
 color: black;
 border-color: black;
 border: 2px black solid;
-   
+border: 2px black solid 
+}
+
+.blink-button{
+background-color: rgb(64, 212, 62);  
+animation: blinking 800ms ease-in-out infinite;
+color: black;
+border: 2px solid;
+
 }
 
 
+@keyframes blinking {
+
+    from{background-color: rgb(57, 188, 55);}
+    to{background-color: lightgray;}
+/* from {opacity: 0;}
+  to {opacity: 100;} */
+}
 
 
 

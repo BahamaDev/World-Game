@@ -100,123 +100,123 @@ bindEvents()
 //     }
 // }
 
-//Main list of Countries and their capitals.
-let countries = [
+//Main list of Countries and their capitals. Held in a separate country-list.js
+// let countries = [
 
-    {
-        country: "The Bahamas",
-        capital: "Nassau"
-    },
-
-
-    {
-        country: "United States of America",
-        capital: "Washington"
-    },
+//     {
+//         country: "The Bahamas",
+//         capital: "Nassau"
+//     },
 
 
-    {
-        country: "Australia",
-        capital: "Canberra"
-    },
+//     {
+//         country: "United States of America",
+//         capital: "Washington"
+//     },
 
 
-    {
-        country: "Belarus",
-        capital: "Minsk"
-    },
+//     {
+//         country: "Australia",
+//         capital: "Canberra"
+//     },
 
 
-
-    {
-        country: "Barbados",
-        capital: "Bridgetown"
-    },
-
-
-    {
-        country: "Cameroon",
-        capital: "Yaounde"
-    },
-
-
-    {
-        country: "Canada",
-        capital: "Ottowa"
-    },
-
-
-    {
-        country: "Brunie",
-        capital: "Bandar Seri Begawan"
-    },
-
-
-    {
-        country: "Costa Rica",
-        capital: "San Jose"
-    },
-
-
-    {
-        country: "Dominica",
-        capital: "Roseau"
-    },
-
-
-    {
-        country: "Denmark",
-        capital: "Copenhagen"
-    },
-
-    {
-        country: "Indonesia",
-        capital: "Jakarta"
-    },
-
-    {
-        country: "Malaysia",
-        capital: "Kuala Lampur"
-
-    },
-
-    {
-        country: "Maldives",
-        capital: "Male"
-    },
-
-    {
-        country: "Saudi Arabia",
-        capital: "Riyadh"
-    },
+//     {
+//         country: "Belarus",
+//         capital: "Minsk"
+//     },
 
 
 
-    {
-        country: "Turkey",
-        capital: "Ankara"
-    },
+//     {
+//         country: "Barbados",
+//         capital: "Bridgetown"
+//     },
 
 
-    {
-        country: "Georgia",
-        capital: "Tbilisi"
-    },
+//     {
+//         country: "Cameroon",
+//         capital: "Yaounde"
+//     },
 
 
-    {
-        country: "Finland",
-        capital: "Helsinki"
-    },
+//     {
+//         country: "Canada",
+//         capital: "Ottowa"
+//     },
+
+
+//     {
+//         country: "Brunie",
+//         capital: "Bandar Seri Begawan"
+//     },
+
+
+//     {
+//         country: "Costa Rica",
+//         capital: "San Jose"
+//     },
+
+
+//     {
+//         country: "Dominica",
+//         capital: "Roseau"
+//     },
+
+
+//     {
+//         country: "Denmark",
+//         capital: "Copenhagen"
+//     },
+
+//     {
+//         country: "Indonesia",
+//         capital: "Jakarta"
+//     },
+
+//     {
+//         country: "Malaysia",
+//         capital: "Kuala Lampur"
+
+//     },
+
+//     {
+//         country: "Maldives",
+//         capital: "Male"
+//     },
+
+//     {
+//         country: "Saudi Arabia",
+//         capital: "Riyadh"
+//     },
 
 
 
-    {
-        country: "Bulgara",
-        capital: "Sofia"
-    },
+//     {
+//         country: "Turkey",
+//         capital: "Ankara"
+//     },
 
-]
+
+//     {
+//         country: "Georgia",
+//         capital: "Tbilisi"
+//     },
+
+
+//     {
+//         country: "Finland",
+//         capital: "Helsinki"
+//     },
+
+
+
+//     {
+//         country: "Bulgara",
+//         capital: "Sofia"
+//     },
+
+// ]
 
 
 
@@ -297,6 +297,7 @@ function serveQuestion() {
     messageAnim.innerHTML = ''
     messageSection.style.display = 'none'
     gameContainer.style.display = 'flex'
+    attemptTrack = 0
 
 
     questionCount += 1
@@ -338,6 +339,16 @@ function serveQuestion() {
                 <button class="answer-button" onclick="wrongAnswer()">${item}</button>`
 
     )
+
+
+
+    let correctdata = {
+
+        answer: correctAnswer,
+        question: questionText
+
+    }
+
 
 
     return questionCount
@@ -403,9 +414,6 @@ let wrongMessage = [
 
 
 
-
-
-
 function generateMessage(messageArr) {
     messageSection.style.display = 'block';
     let messageIndex = Math.floor(Math.random() * messageArr.length)
@@ -434,17 +442,28 @@ function rightAnswer() {
 
 
 function wrongAnswer() {
-    
+
     attemptTrack += 1
     wrongAnswerCount += 1
 
-    if(attemptTrack == maxAttempt){
-    displayNextbutton()
-    generateMessage(wrongMessage)
-    messageSection.style.backgroundColor = "rgb(255, 61, 51)";
-    messageText.style.color = "white";
+    if (attemptTrack == maxAttempt) {
+        let correctButton = document.getElementById('correct-answer')
+        // correctButton.style.backgroundColor = "rgb(97, 238, 207"
+        correctButton.classList.add('blink-button')
+
+        setTimeout(function () {
+            generateMessage(wrongMessage)
+            messageSection.style.backgroundColor = "rgb(255, 61, 51)";
+            messageText.style.color = "white"
+            displayNextbutton()
+        },
+        
+        7000)
+
+        
+
     }
-    else{
+    else {
 
         alert("Nope. Try Again!")
     }
@@ -460,11 +479,7 @@ console.log(questionCount)
 
 function endGame() {
     alert("game over")
-    let answerButtons = document.getElementsByClassName("answer-button")
-    console.log("Game Over")
-    for (let i = 0; i < answerButtons.length; i++) {
-        answerButtons[i].style.display = "none"
-    }
+    //make stats modal appear.
     return
 
 }
