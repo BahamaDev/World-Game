@@ -1,5 +1,6 @@
 *, *::before, *::after {
   box-sizing: border-box;
+  
 }
 
 
@@ -32,9 +33,25 @@ background-image: url("/img/landmark.png");
 
 
 #game-header{
-border: 1px black solid;
+font-size: 100pt;
+color: rgb(255, 196, 0);
+text-shadow: 2px 2px 6px black;
+letter-spacing: 10px ;
+line-height: 1;
+/* outline: 1px solid black; */
+margin: 0 auto;
+z-index: 1;
+position: relative;
+top: -70px;
+word-wrap: normal;
+text-align: center;
+}
 
-
+@media(max-width: 768px) {
+   #game-header{ font-size: 70pt;
+    position: relative;
+    top: -60;
+}
 }
 
 
@@ -43,9 +60,10 @@ border: 1px black solid;
 #welcome-screen{
 background-color: rgba(255, 255, 255, 0.9);
 display: flex;
-max-width: 1100px;
-width: 60%;
+max-width: 800px;
+width: 90%;
 min-height: 500px;
+
 flex-flow: column;
 justify-content: center;
 align-items: center;
@@ -116,34 +134,45 @@ padding-top: 10px;
 #game-container{
     display: flex;
     flex-flow: column;
-    max-width: 1100px;
-    width: 60%;
+    max-width: 1000px;
+    width: 95%;
     height: auto;
-    min-height: 500px;
-    background-color: rgb(232, 232, 232);
+    min-height: 300px;
+    background-color: rgb(251, 251, 251);
     padding: 10px;
     justify-content: center;
     align-items: center;
     animation-name: get-in;
     animation-duration: .5s;
     
-
 }
 
 
 
+
+
 #question-text{
-    font-size: 30pt;
-    font-weight: 400;
-    flex: 1 1 80%;
+    font-size: 3rem;
+    font-weight: 600;
+    /* flex: 0 1 80%; */
     width: 100%;
     /* border: 1px black solid; */
     background-color: rgb(255, 207, 51);
-    margin: 0 auto;
-    align-items: center;
-    justify-items: center;
+    
+    /* align-items: center; */
+    /* justify-items: center; */
+    /* text-align: start; */
     text-align: center;
-   padding-bottom: 0px;
+    padding: 2.5rem 1rem;
+}
+
+@media(max-width: 425px){
+
+    #question-text{
+        font-size: 2em;
+        font-weight: 600;
+        padding: 2rem .5rem;
+    }
 }
 
 
@@ -160,6 +189,16 @@ padding-top: 10px;
     align-items: center;
 }
 
+@media(max-width: 425px){
+
+    .btn-grid{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+}
+
 
 .answer-button{
 background-color: red;
@@ -174,6 +213,13 @@ outline: none;
 border: none;
 padding-bottom: 0;
 transition-duration: .5s;
+}
+
+@media(max-width: 425px){
+
+    .answer-button{
+        width: 90%;
+    }
 }
 
 
@@ -196,26 +242,34 @@ border: 2px black solid;
    height: auto;
     flex-wrap: wrap;
     flex: 1 0 auto;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 15px;
+    padding: 5px 15px;
+    
 }
+
 
 
 
 .stats-info{
     color: grey;
-    font-size: 15pt;
-    font-weight: bold;
+    font-size: 20pt;
+    font-weight: 400;
     padding-top: 0 5px;
     height: auto;
-   
-
+    margin: 5px 10px;
   
 }
 
+@media(max-width: 768px){
+
+.stats-info{
+    font-size: 1em ;
+    /* height: 2em; */
+}
 
 
+}
 
 #message-modal{
 background-color: rgb(97, 238, 207);
@@ -228,7 +282,6 @@ justify-content: center;
 align-items: center;
 animation-name: get-in;
 animation-duration: .5s;
-
 }
 
 
@@ -238,13 +291,33 @@ from {opacity: 0;}
 }
 
 
+@media(max-width: 455px){
+    #message-modal{
+        width: 90%;
+
+    }
+}
+
+
 
 #modal-text{
 height: auto;
-    width:100%;
-    font-size: 50pt;
+    width:90%;
+    font-size: 45pt;
     font-weight: 600;
     text-align: center;
+    margin: 0 auto;
+    line-height: 1;
+    padding-top: 10px;
+}
+
+@media(max-width: 768px){
+#modal-text{
+    font-size: 30pt;
+    word-wrap: normal;
+
+}
+
 }
  
 
@@ -279,12 +352,76 @@ padding-top: 10px;
 
 
 #next-button:hover{
-    color: black;
+color: black;
 border-color: black;
 border: 2px black solid;
    
 }
 
+
+
+
+
+#tally-modal{
+/* background-color: rgb(97, 238, 207); */
+background-image: linear-gradient(to bottom right, rgb(0, 157, 255), rgb(164, 221, 247));
+display: flex;
+max-width: 800px;
+width: 70%;
+min-height: 400px;
+flex-flow: column;
+justify-content: space-evenly;
+align-items: center;
+animation-name: get-in;
+animation-duration: .5s;
+}
+
+
+
+.tally-greeting{
+/* height: auto; */
+color: white;
+    width:100%;
+    font-size: 55pt;
+    font-weight: 600;
+    text-align: center;
+    margin: 10px auto;
+
+}
+
+
+
+
+
+.play-again{
+background-color:rgb(255, 196, 0) ;
+width: 50%;
+min-height: 60px;
+/* border-radius: 5px; */
+border: none;
+color: white;
+font-size: 20pt;
+font-weight: bolder;
+margin: 10px auto;
+}
+
+
+.play-again:hover{
+color: black;
+border-color: black;
+border: 2px black solid;
+   
+}
+
+
+
+.tally-text{
+font-size: 30pt;
+font-weight: 600;
+text-align: center;
+margin: 8px;
+padding: 10px;
+}
 
 
 

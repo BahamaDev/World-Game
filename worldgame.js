@@ -37,7 +37,8 @@ let messageAnim = document.getElementById('modal-animation')
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
 let gameContainer = document.getElementById('game-container')
-
+let attemptTrack = 0
+let maxAttempt = 2
 
 
 
@@ -240,7 +241,7 @@ function getQuestionArr({ country, capital }) {
 
 
         {
-            question: `If you visit ${capital}, you will be the coutry of __________ .`,
+            question: `If you visit ${capital}, you will be the country of __________ .`,
             answer: `${country}`
         }
     ]
@@ -258,9 +259,9 @@ function getQuestionArr({ country, capital }) {
 function renderStats() {
     //For Score Tracking
     let ratioCal = Math.floor((rightAnswerCount / questionCount) * 100)
-    questionCounter.innerHTML = `<p> Question: ${questionCount} <p>`
-    rightCounter.innerHTML = `<p> Right: ${rightAnswerCount} <p>`
-    wrongCounter.innerHTML = `<p> Wrong: ${wrongAnswerCount} <p>`
+    questionCounter.innerHTML = `Question: ${questionCount}`
+    rightCounter.innerHTML = `Right: ${rightAnswerCount} `
+    wrongCounter.innerHTML = `Wrong: ${wrongAnswerCount}`
     ratioCount.innerHTML = `Success Ratio: ${ratioCal}%`
 }
 
@@ -293,8 +294,8 @@ function serveQuestion() {
     // startButton.style.display = "none"
     welcomeScreen.style.display = "none"
     messageText.innerHTML = ''
-    messageAnim.innerHTML =''
-    messageSection.style.display='none'
+    messageAnim.innerHTML = ''
+    messageSection.style.display = 'none'
     gameContainer.style.display = 'flex'
 
 
@@ -433,12 +434,20 @@ function rightAnswer() {
 
 
 function wrongAnswer() {
+    
+    attemptTrack += 1
     wrongAnswerCount += 1
+
+    if(attemptTrack == maxAttempt){
     displayNextbutton()
     generateMessage(wrongMessage)
-    messageSection.style.backgroundColor = "rgb(255, 61, 51)"; 
+    messageSection.style.backgroundColor = "rgb(255, 61, 51)";
     messageText.style.color = "white";
-    
+    }
+    else{
+
+        alert("Nope. Try Again!")
+    }
 
 }
 
