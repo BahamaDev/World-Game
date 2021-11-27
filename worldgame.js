@@ -448,19 +448,28 @@ function wrongAnswer() {
 
     if (attemptTrack == maxAttempt) {
         let correctButton = document.getElementById('correct-answer')
-        // correctButton.style.backgroundColor = "rgb(97, 238, 207"
+        let answerButtons = document.getElementsByClassName('answer-button')
+        //correctButton.style.backgroundColor = "rgb(97, 238, 207"
         correctButton.classList.add('blink-button')
+        console.log(answerButtons)
+
+        //disable button functions whilst correct as correct answer is highlighted.
+        for (let i = 0; i < answerButtons.length; i++) {
+            answerButtons[i].setAttribute('disabled', 'true')
+
+        }
+
 
         setTimeout(function () {
             generateMessage(wrongMessage)
             messageSection.style.backgroundColor = "rgb(255, 61, 51)";
             messageText.style.color = "white"
-            displayNextbutton()
-        },
-        
-        7000)
 
-        
+        },
+
+            7000)
+
+        displayNextbutton()
 
     }
     else {
