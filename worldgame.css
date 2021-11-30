@@ -24,9 +24,6 @@ background-image: url("/img/landmark.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
-
 }
 
 
@@ -63,13 +60,12 @@ display: flex;
 max-width: 800px;
 width: 90%;
 min-height: 500px;
-
 flex-flow: column;
 justify-content: center;
 align-items: center;
-
-
 }
+
+
 
 
 #welcome-text-container{
@@ -99,8 +95,6 @@ color: black;
 border-color: black;
 width: 53%;
 border: 1px black solid;
-
-
 }
 
 
@@ -121,14 +115,11 @@ z-index: 1;
 
 
 #welcome-image{
-max-width: 70%;
-max-height: auto;
-border: 3px solid red;
-padding-top: 10px;
-
+    max-width: 70%;
+    max-height: auto;
+    border: 3px solid red;
+    padding-top: 10px;
 }
-
-
 
 
 #game-container{
@@ -148,26 +139,17 @@ padding-top: 10px;
 }
 
 
-
-
-
 #question-text{
     font-size: 3rem;
     font-weight: 600;
-    /* flex: 0 1 80%; */
     width: 100%;
-    /* border: 1px black solid; */
     background-color: rgb(255, 207, 51);
-    
-    /* align-items: center; */
-    /* justify-items: center; */
-    /* text-align: start; */
     text-align: center;
     padding: 2.5rem 1rem;
 }
 
-@media(max-width: 425px){
 
+@media(max-width: 425px){
     #question-text{
         font-size: 2em;
         font-weight: 600;
@@ -201,18 +183,18 @@ padding-top: 10px;
 
 
 .answer-button{
-background-color: red;
-font-size: large;
-font-weight: bold;
-font-size: 20pt;
-min-height: 50px;
-min-width: 50%;
-height: 70px;
-color: white;
-outline: none;
-border: none;
-padding-bottom: 0;
-transition-duration: .5s;
+    background-color: red;
+    font-size: large;
+    font-weight: bold;
+    font-size: 20pt;
+    min-height: 50px;
+    min-width: 50%;
+    height: 70px;
+    color: white;
+    outline: none;
+    border: none;
+    padding-bottom: 0;
+    transition-duration: .5s;
 }
 
 @media(max-width: 425px){
@@ -231,23 +213,20 @@ border: 2px black solid;
 border: 2px black solid 
 }
 
+
 .blink-button{
-background-color: rgb(64, 212, 62);  
-animation: blinking 800ms ease-in-out infinite;
-color: black;
-border: 2px solid;
-
+    background-color: rgb(64, 212, 62);  
+    animation: blinking 800ms ease-in-out infinite;
+    color: black;
+    border: 2px solid;
 }
-
 
 @keyframes blinking {
 
     from{background-color: rgb(57, 188, 55);}
     to{background-color: lightgray;}
-/* from {opacity: 0;}
-  to {opacity: 100;} */
-}
 
+}
 
 
 #stats-container{
@@ -259,11 +238,8 @@ border: 2px solid;
     flex: 1 0 auto;
     justify-content: space-around;
     align-items: center;
-    padding: 5px 15px;
-    
+    padding: 5px 15px; 
 }
-
-
 
 
 .stats-info{
@@ -273,38 +249,34 @@ border: 2px solid;
     padding-top: 0 5px;
     height: auto;
     margin: 5px 10px;
-  
 }
 
 @media(max-width: 768px){
-
-.stats-info{
+    .stats-info{
     font-size: 1em ;
     /* height: 2em; */
+    }
 }
 
 
-}
 
 #message-modal{
-background-color: rgb(97, 238, 207);
-display: flex;
-max-width: 800px;
-width: 60%;
-min-height: 300px;
-flex-flow: column;
-justify-content: center;
-align-items: center;
-animation-name: get-in;
-animation-duration: .5s;
+    background-color: rgb(97, 238, 207);
+    display: flex;
+    max-width: 800px;
+    width: 60%;
+    min-height: 300px;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    animation-name: get-in;
+    animation-duration: .5s;
 }
-
 
 @keyframes get-in {
 from {opacity: 0;}
   to {opacity: 1;}
 }
-
 
 @media(max-width: 455px){
     #message-modal{
@@ -314,9 +286,8 @@ from {opacity: 0;}
 }
 
 
-
 #modal-text{
-height: auto;
+    height: auto;
     width:90%;
     font-size: 45pt;
     font-weight: 600;
@@ -327,25 +298,22 @@ height: auto;
 }
 
 @media(max-width: 768px){
-#modal-text{
+    #modal-text{
     font-size: 30pt;
     word-wrap: normal;
-
-}
-
+    }
 }
  
 
 
 #modal-animation{
-display: flex;
-border: 8px white solid;
-width: 60%;
-max-height: fit-content;
-object-fit: contain;
-margin: 10px auto;
-pointer-events: none;
-
+    display: flex;
+    border: 8px white solid;
+    width: 60%;
+    max-height: fit-content;
+    object-fit: contain;
+    margin: 10px auto;
+    pointer-events: none;
 }
 
 
@@ -361,51 +329,48 @@ font-size: large;
 font-weight: bolder;
 margin: 10px auto;
 padding-top: 10px;
-
 }
-
-
 
 #next-button:hover{
 color: black;
 border-color: black;
-border: 2px black solid;
-   
+border: 2px black solid; 
 }
-
-
-
 
 
 #tally-modal{
 /* background-color: rgb(97, 238, 207); */
 background-image: linear-gradient(to bottom right, rgb(0, 157, 255), rgb(164, 221, 247));
-display: flex;
+display: none;
 max-width: 800px;
 width: 70%;
 min-height: 400px;
 flex-flow: column;
 justify-content: space-evenly;
 align-items: center;
-animation-name: get-in;
+/* animation-name: get-in; */
 animation-duration: .5s;
 }
 
 
-
 .tally-greeting{
-/* height: auto; */
-color: white;
+    /* height: auto; */
+    color: white;
     width:100%;
     font-size: 55pt;
     font-weight: 600;
     text-align: center;
     margin: 10px auto;
-
 }
 
 
-
+#tally-text{
+font-size: 2.5rem;
+font-weight: 400;
+text-align: center;
+/* margin-top: 8px auto 2px auto; */
+padding: 5px;
+}
 
 
 .play-again{
@@ -415,34 +380,21 @@ min-height: 60px;
 /* border-radius: 5px; */
 border: none;
 color: white;
-font-size: 20pt;
+font-size: 1.2rem;
 font-weight: bolder;
-margin: 10px auto;
+/* margin: 0 auto; */
+justify-items: center;
+margin: 15px 3px;
 }
-
 
 .play-again:hover{
 color: black;
 border-color: black;
-border: 2px black solid;
-   
+border: 2px black solid;  
 }
 
 
 
-.tally-text{
-font-size: 30pt;
-font-weight: 600;
-text-align: center;
-margin: 8px;
-padding: 10px;
-}
 
 
 
-/* https://undraw.co/ */
-/* https://drawkit.com/search-kits */
-
-
-
-/* <a href="https://iconscout.com/illustrations/person" target="_blank">Person finding location for vacation Illustration</a> by <a href="https://iconscout.com/contributors/delesign">Delesign Graphics</a> on <a href="https://iconscout.com">Iconscout</a> */

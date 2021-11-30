@@ -18,7 +18,8 @@
 
 
 // Global vars
-let questionCount = 1
+let roundLimit = 1
+let questionCount = 0
 let rightAnswerCount = 0
 let wrongAnswerCount = 0
 let questionCounter = document.getElementById('question-counter') // $('#'question-counter'')
@@ -37,6 +38,7 @@ let messageAnim = document.getElementById('modal-animation')
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
 let gameContainer = document.getElementById('game-container')
+let endTally = document.getElementById('tally-modal')
 let attemptTrack = 0
 let maxAttempt = 2
 
@@ -55,169 +57,29 @@ function bindEvents() {
     gameContainer.style.display = "none";
     messageSection.style.display = "none"
 }
-
 bindEvents()
 
 
-// Functions below muted for now. Will revisit round count after styling.
-// function startGame() {
-//     setGameRounds()
-//     gameControl()
 
-//     welcomeScreen.parentNode.removeChild(welcomeScreen)
-//     // startButton.parentNode.removeChild(startButton)
-//     getRounds.value = 0
-//     console.log("game start successfull")
+
+
+
+function gameControl(){
+    if (questionCount > roundLimit){
+        alert("game over")
+
+        endGame()
+
+
+
+
+        return
+    }
+}
+
+// function reloadGame(){
+//     reloadGame()
 // }
-
-
-
-// function setGameRounds() {
-//     let rounds = 0
-//     console.log(getRounds)
-//     console.log(typeof(getRounds))
-//     if (getRounds == "3") { rounds = 3 }
-//     else if (getRounds == "5") { rounds = 5 }
-//     else {rounds = 7}
-//     console.log("game rounds set at " + rounds)
-//     return rounds
-// }
-
-
-
-// let newRounds = setGameRounds()
-// console.log("newRounds" + newRounds)
-
-
-
-// function gameControl() {
-//     console.log("newRounds" + newRounds)
-//     let rounds = newRounds
-//     while (rounds > questionCount) {
-//         serveQuestion();
-// endGame();
-
-//     }
-// }
-
-//Main list of Countries and their capitals. Held in a separate country-list.js
-// let countries = [
-
-//     {
-//         country: "The Bahamas",
-//         capital: "Nassau"
-//     },
-
-
-//     {
-//         country: "United States of America",
-//         capital: "Washington"
-//     },
-
-
-//     {
-//         country: "Australia",
-//         capital: "Canberra"
-//     },
-
-
-//     {
-//         country: "Belarus",
-//         capital: "Minsk"
-//     },
-
-
-
-//     {
-//         country: "Barbados",
-//         capital: "Bridgetown"
-//     },
-
-
-//     {
-//         country: "Cameroon",
-//         capital: "Yaounde"
-//     },
-
-
-//     {
-//         country: "Canada",
-//         capital: "Ottowa"
-//     },
-
-
-//     {
-//         country: "Brunie",
-//         capital: "Bandar Seri Begawan"
-//     },
-
-
-//     {
-//         country: "Costa Rica",
-//         capital: "San Jose"
-//     },
-
-
-//     {
-//         country: "Dominica",
-//         capital: "Roseau"
-//     },
-
-
-//     {
-//         country: "Denmark",
-//         capital: "Copenhagen"
-//     },
-
-//     {
-//         country: "Indonesia",
-//         capital: "Jakarta"
-//     },
-
-//     {
-//         country: "Malaysia",
-//         capital: "Kuala Lampur"
-
-//     },
-
-//     {
-//         country: "Maldives",
-//         capital: "Male"
-//     },
-
-//     {
-//         country: "Saudi Arabia",
-//         capital: "Riyadh"
-//     },
-
-
-
-//     {
-//         country: "Turkey",
-//         capital: "Ankara"
-//     },
-
-
-//     {
-//         country: "Georgia",
-//         capital: "Tbilisi"
-//     },
-
-
-//     {
-//         country: "Finland",
-//         capital: "Helsinki"
-//     },
-
-
-
-//     {
-//         country: "Bulgara",
-//         capital: "Sofia"
-//     },
-
-// ]
-
 
 
 // Places the selected country-capital pair into a question sentence and answer.
@@ -263,6 +125,7 @@ function renderStats() {
     rightCounter.innerHTML = `Right: ${rightAnswerCount} `
     wrongCounter.innerHTML = `Wrong: ${wrongAnswerCount}`
     ratioCount.innerHTML = `Success Ratio: ${ratioCal}%`
+
 }
 
 
@@ -291,6 +154,7 @@ function serveQuestion() {
     // console.log(`Rounds start ${setGameRounds()}`)
     console.log(`question start ${questionCount}`)
     renderStats();
+
     // startButton.style.display = "none"
     welcomeScreen.style.display = "none"
     messageText.innerHTML = ''
@@ -298,9 +162,9 @@ function serveQuestion() {
     messageSection.style.display = 'none'
     gameContainer.style.display = 'flex'
     attemptTrack = 0
-
-
     questionCount += 1
+
+    gameControl()
 
     let countryIndex = Math.floor(Math.random() * countries.length + 1) // Picks a random country-capital pair from the countries array
 
@@ -467,7 +331,7 @@ function wrongAnswer() {
 
         },
 
-            7000)
+            4000)
 
         displayNextbutton()
 
@@ -487,23 +351,24 @@ console.log(questionCount)
 
 
 function endGame() {
+    let endRatioCal = Math.floor((rightAnswerCount / questionCount) * 100)
+    gameContainer.style.display = 'none'
+    welcomeScreen.style.display = 'none'
+    messageSection.style.display = 'none'
     alert("game over")
-    //make stats modal appear.
-    return
+    endTally.style.display = 'flex'
+    let tallyText = document.getElementById('tally-text')
+    tallyText.innerHTML = 
+    
+    // `<p>You answered <em>${ questionCount }</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em></p>`
+        `You answered <em>${questionCount}</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em>`
 
 }
 
-//Video Aid: https://www.youtube.com/watch?v=R1S_NhKkvGA
-
-// Have User Choose the number of Rounds - 
-// Have small modal with messages to confirm right or wrong answer. 
-//Maybe add sound to answer
-// Modal with total score and stats at end of game
 
 
 
-// Need to initiate game with a start button. - Completed
-// Need to track score count and right or wrong answers - Completed
-//Need to allow user to move on to next question -Completed
+
+
 
 
