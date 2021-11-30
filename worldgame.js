@@ -369,6 +369,13 @@ function endGame() {
 
 
 
+//Final Touches//
+//Round Counter
+//Ecape / Return Button
+//Add Arrows to buttons for added flow
+/// Complete Resposive - 
+/// MOVE ON FROM HERE AND LEAVE OTHER CHANGES FOR VERSION 3.0.
+
 
 
 
