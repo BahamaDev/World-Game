@@ -1,24 +1,7 @@
 
 
-// const Program = {
-//     init() {
-//         Program.serveQuestion();
-//     },
-
-//     bindEvents() {
-//         // Bind buttons click events...
-//     },
-
-//     serveQuestion() {
-//         // ...
-//     },
-// };
-
-
-
-
 // Global vars
-let roundLimit = 1
+let roundLimit = 5
 let questionCount = 0
 let rightAnswerCount = 0
 let wrongAnswerCount = 0
@@ -34,7 +17,6 @@ let infoForm = document.getElementById("info-form")
 let messageSection = document.getElementById('message-modal')
 let messageText = document.getElementById('modal-text')
 let messageAnim = document.getElementById('modal-animation')
-// let getRounds = document.getElementById('round-selector').value
 const questionText = document.getElementById("question-text")
 const optionButtons = document.getElementById("option-buttons")
 let gameContainer = document.getElementById('game-container')
@@ -66,7 +48,7 @@ bindEvents()
 
 function gameControl(){
     if (questionCount > roundLimit){
-        alert("game over")
+       
 
         endGame()
 
@@ -76,10 +58,6 @@ function gameControl(){
         return
     }
 }
-
-// function reloadGame(){
-//     reloadGame()
-// }
 
 
 // Places the selected country-capital pair into a question sentence and answer.
@@ -109,13 +87,6 @@ function getQuestionArr({ country, capital }) {
     ]
 }
 
-
-
-// jQuery
-// ReactJS Angular VueJS
-// [].find [].forEach [].map
-// if - ternary op
-// functions
 
 
 function renderStats() {
