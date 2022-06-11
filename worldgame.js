@@ -1,6 +1,6 @@
 // Global vars
 let roundLimit = 5;
-let questionCount = 0;
+let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
 let questionCounter = document.getElementById("question-counter"); // $('#'question-counter'')
@@ -20,7 +20,12 @@ const optionButtons = document.getElementById("option-buttons");
 let gameContainer = document.getElementById("game-container");
 let endTally = document.getElementById("tally-modal");
 let attemptTrack = 0;
-let maxAttempt = 2;
+let maxAttempt = 4;
+let roundTracker = document.getElementById("round-tracker-counter");
+let attemptcounter = document.getElementById("attempt-tracker-counter");
+// attemptcounter.innerHTML = `Attempt ${attemptTrack} of ${maxAttempt}`;
+let messageBar = document.getElementById("message-bar");
+messageBar.innerText = `Try Again!`;
 
 function bindEvents() {
   // infoForm.addEventListener('submit', startGame)
@@ -91,17 +96,17 @@ function generateOtherAnswers(correctAnswer, index) {
 
 //Main function that composes the Q&A content and send it to the DOM.
 function serveQuestion() {
-  // console.log(`Rounds start ${setGameRounds()}`)
-  console.log(`question start ${questionCount}`);
-  renderStats();
+  // Sets values for new game
 
-  // startButton.style.display = "none"
+  renderStats();``
   welcomeScreen.style.display = "none";
   messageText.innerHTML = "";
   messageAnim.innerHTML = "";
   messageSection.style.display = "none";
   gameContainer.style.display = "flex";
-  attemptTrack = 0;
+  attemptTrack = 1;
+  roundTracker.innerHTML = `Round ${questionCount} of ${roundLimit}`;
+
   questionCount += 1;
 
   gameControl();
@@ -205,7 +210,6 @@ function generateMessage(messageArr) {
   thatNode.style.display = "none";
   return;
 }
-
 function rightAnswer() {
   rightAnswerCount += 1;
   displayNextbutton();
@@ -215,7 +219,8 @@ function rightAnswer() {
 }
 
 function wrongAnswer() {
-  attemptTrack += 1;
+  attemptTrack = attemptTrack + 1;
+  console.log(attemptTrack);
   wrongAnswerCount += 1;
 
   if (attemptTrack == maxAttempt) {
@@ -237,17 +242,21 @@ function wrongAnswer() {
         messageText.style.color = "white";
       },
 
-      4000
+      3000
     );
 
     displayNextbutton();
   } else {
-    let tryAgainModal = document.getElementById("try-again-modal");
-    tryAgainModal.style.display = "flex";
-    tryAgainModal.classList.add("blink-button");
-    alert("Nope. Try Again!");
+    messageBar.style.display = "flex";
+    messageBar.classList.add("blink-message");
+    setTimeout(() => {
+      clearTimeout();
+      messageBar.style.display = "none";
+    }, 2000);
   }
 }
+
+// function tryAgain() {}
 
 console.log(questionCount);
 
@@ -261,9 +270,7 @@ function endGame() {
   alert("game over");
   endTally.style.display = "flex";
   let tallyText = document.getElementById("tally-text");
-  tallyText.innerHTML =
-    // `<p>You answered <em>${ questionCount }</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em></p>`
-    `You answered <em>${questionCount}</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em>`;
+  tallyText.innerHTML = `You answered <em>${questionCount}</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em>`;
 }
 
 //Final Touches//
