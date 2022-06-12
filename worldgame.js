@@ -27,10 +27,9 @@ let attemptcounter = document.getElementById("attempt-tracker-counter");
 let messageBar = document.getElementById("message-bar");
 messageBar.innerText = `Try Again!`;
 
+//Enables initial actions and display values in the game.
 function bindEvents() {
-  // infoForm.addEventListener('submit', startGame)
   startButton.addEventListener("click", serveQuestion);
-  // startButton.addEventListener('click', startGame)
   nextButton.addEventListener("click", serveQuestion);
   nextButton.style.display = "none";
   console.log("bind Events Successful");
@@ -39,6 +38,7 @@ function bindEvents() {
 }
 bindEvents();
 
+// Checks the current round against the roundLimit, and ends the game once they match.
 function gameControl() {
   if (questionCount > roundLimit) {
     endGame();
@@ -72,8 +72,9 @@ function getQuestionArr({ country, capital }) {
   ];
 }
 
+// Manages stats and scores.
 function renderStats() {
-  //For Score Tracking
+  // For Score tracking
   let ratioCal = Math.floor((rightAnswerCount / questionCount) * 100);
   questionCounter.innerHTML = `Question: ${questionCount}`;
   rightCounter.innerHTML = `Right: ${rightAnswerCount} `;
@@ -81,7 +82,7 @@ function renderStats() {
   ratioCount.innerHTML = `Success Ratio: ${ratioCal}%`;
 }
 
-//Generates other incorrect answers: pulls other randoms answers from the original "countries" array, based on whether the correct answer is a captial or country.
+//Generates other incorrect answers. Pulls other randoms answers from the original "countries" array, based on whether the correct answer is a captial or country.
 function generateOtherAnswers(correctAnswer, index) {
   let otherAnswerIndex = Math.floor(Math.random() * countries.length);
   let otherAnswer = "";
@@ -98,18 +99,17 @@ function generateOtherAnswers(correctAnswer, index) {
 function serveQuestion() {
   // Sets values for new game
 
-  renderStats();``
+  renderStats();
   welcomeScreen.style.display = "none";
   messageText.innerHTML = "";
   messageAnim.innerHTML = "";
   messageSection.style.display = "none";
   gameContainer.style.display = "flex";
   attemptTrack = 1;
-  roundTracker.innerHTML = `Round ${questionCount} of ${roundLimit}`;
-
+  roundTracker.innerHTML = `Round ${questionCount}/${roundLimit}`;
   questionCount += 1;
-
   gameControl();
+  playBackground();
 
   let countryIndex = Math.floor(Math.random() * countries.length + 1); // Picks a random country-capital pair from the countries array
 
@@ -120,21 +120,21 @@ function serveQuestion() {
 
   let correctAnswer = questionArr[questionIndex].answer; // Identifies the correct answer from the questionArr.
 
-  // Sets/show question
-  questionText.innerHTML = questionArr[questionIndex].question; //pushes question to DOM
-
+  // Sets and displays question
+  questionText.innerHTML = questionArr[questionIndex].question; //pushes question to DOM=
   let otherAnswer1 = generateOtherAnswers(correctAnswer, countryIndex);
   let otherAnswer2 = generateOtherAnswers(correctAnswer, countryIndex);
   let otherAnswer3 = generateOtherAnswers(correctAnswer, countryIndex);
 
+  //Collects the correct and incorrect answers into an array for handling.
   answerArr.push(correctAnswer, otherAnswer1, otherAnswer2, otherAnswer3); //Pushes all created answers to an answerArr
-  // console.log(answerArr)
 
-  // Shuffle answers
-  answerArr = answerArr.sort((a, b) => 0.5 - Math.random()); // Shuffles the answers in the answerArr.
+  answerArr = answerArr.sort(() => 0.5 - Math.random()); // Puts all of the answers from the answerArr into a random order.
 
   // Show options
   optionButtons.innerHTML = "";
+
+  // Pushes all of the answers fromt he answerArr to the DOM
   answerArr.forEach((item) =>
     item === correctAnswer
       ? (optionButtons.innerHTML += `
@@ -143,11 +143,6 @@ function serveQuestion() {
       : (optionButtons.innerHTML += `
                 <button class="answer-button" onclick="wrongAnswer()">${item}</button>`)
   );
-
-  let correctdata = {
-    answer: correctAnswer,
-    question: questionText,
-  };
 
   return questionCount;
 }
@@ -158,6 +153,7 @@ function displayNextbutton() {
   nextButton.style.display = "block";
 }
 
+//Array of prompt message options for when the right answer is chosen.
 let rightMessage = [
   {
     message: "Great Job!",
@@ -180,6 +176,7 @@ let rightMessage = [
   },
 ];
 
+//Array of prompt message options for when the wrong answer is chosen.
 let wrongMessage = [
   {
     message: "That answer was incorrect. Maybe another time.",
