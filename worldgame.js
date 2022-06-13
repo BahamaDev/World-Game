@@ -1,5 +1,5 @@
 // Global vars
-let roundLimit = 5;
+let roundLimit = 2;
 let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
@@ -27,6 +27,28 @@ let attemptcounter = document.getElementById("attempt-tracker-counter");
 let messageBar = document.getElementById("message-bar");
 messageBar.innerText = `Try Again!`;
 
+//Related to Sound
+let bg = "./audio-files/Water Level Game.mp3";
+let rightSound = "./audio-files/Achieved.mp3";
+let wrongSound = "./audio-files/WRONG BUZZER 6.wav";
+let tallysound = "./audio-files/Pull Slot.mp3";
+let soundbtn = document.getElementById("sound-btn");
+// soundbtn.addEventListener("click", playbgAudio);
+
+// function playSound(src) {
+//   // e.preventDefault();
+//   let audio = document.getElementById("audio-element");
+//   audio.src = src;
+//   audio.play();
+//   audio.volume = 0.3;
+// }
+// function playbgAudio() {
+//   // e.preventDefault();
+//   let audio = document.getElementById("bgaudio");
+//   audio.play();
+//   audio.volume = 0.3;
+// }
+
 //Enables initial actions and display values in the game.
 function bindEvents() {
   startButton.addEventListener("click", serveQuestion);
@@ -37,6 +59,7 @@ function bindEvents() {
   messageSection.style.display = "none";
 }
 bindEvents();
+// playSound(bg);
 
 // Checks the current round against the roundLimit, and ends the game once they match.
 function gameControl() {
@@ -109,7 +132,6 @@ function serveQuestion() {
   roundTracker.innerHTML = `Round ${questionCount}/${roundLimit}`;
   questionCount += 1;
   gameControl();
-  playBackground();
 
   let countryIndex = Math.floor(Math.random() * countries.length + 1); // Picks a random country-capital pair from the countries array
 
@@ -208,6 +230,7 @@ function generateMessage(messageArr) {
   return;
 }
 function rightAnswer() {
+  // playSound(rightSound);
   rightAnswerCount += 1;
   displayNextbutton();
   messageSection.style.backgroundColor = "rgb(97, 238, 207)";
@@ -216,6 +239,7 @@ function rightAnswer() {
 }
 
 function wrongAnswer() {
+  // playSound(wrongSound);
   attemptTrack = attemptTrack + 1;
   console.log(attemptTrack);
   wrongAnswerCount += 1;
@@ -260,6 +284,7 @@ console.log(questionCount);
 // serveQuestion()
 
 function endGame() {
+  // playSound(tallysound);
   let endRatioCal = Math.floor((rightAnswerCount / questionCount) * 100);
   gameContainer.style.display = "none";
   welcomeScreen.style.display = "none";

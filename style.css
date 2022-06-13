@@ -143,6 +143,84 @@ body {
 }
 
 
+
+#round-tracker-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    flex-direction: row;
+    background-color: rgb(228, 228, 228);
+    height: 70px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* justify-content: space-around; */
+    grid-template-areas: "round-tracker-counter message-bar";
+}
+
+#round-tracker-counter {
+    /* border: 1px rgb(249, 127, 127) solid; */
+    color: black;
+    font-size: clamp(.5rem, 1.5em, 8vw);
+    /* margin-right: 10px; */
+    width: auto;
+    /* border: 1px black solid; */
+    flex: 1 0 20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    grid-area: "round-tracker-counter";
+}
+
+#message-bar {
+    display: none;
+    color: black;
+    font-size: 30pt;
+    /* flex: 2 0 60%; */
+    justify-content: center;
+    transition-duration: 500ms;
+    text-align: center;
+    height: auto;
+    padding: 10px 0px;
+    grid-area: "message-bar";
+}
+
+
+.blink-message {
+    /* background-color: rgb(64, 212, 62); */
+    animation: blinking 500ms infinite;
+    transition-duration: 500ms;
+}
+
+
+@keyframes blinking {
+    from {
+        background-color: rgb(57, 188, 55);
+    }
+
+    to {
+        background-color: lightgray;
+    }
+
+}
+
+
+#attempt-tracker-counter {
+    /* border: 1px rgb(249, 127, 127) solid; */
+    color: black;
+    font-size: 1.5rem;
+    /* margin-right: 10px; */
+    width: auto;
+    /* border: 1px black solid; */
+    flex: 1 0 20%;
+    text-align: right;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
+
+
+
 .question-container {
     display: flex;
     font-weight: 600;
@@ -151,16 +229,14 @@ body {
     width: 95%;
     background-color: rgb(255, 207, 51);
     text-align: center;
-    /* padding: 2rem 1rem; */
+    padding: 2px 2px;
     align-items: center;
 }
 
 #question-text {
     font-size: 2.2em;
-    font-size: clamp();
     text-align: center;
 }
-
 
 
 .btn-grid {
@@ -210,8 +286,6 @@ body {
     border: 2px solid;
 }
 
-
-
 @keyframes blinking {
 
     from {
@@ -223,12 +297,6 @@ body {
     }
 
 }
-
-
-
-
-
-
 
 #stats-container {
     display: flex;
@@ -255,14 +323,77 @@ body {
 
 
 
+
+
 /* GAME CONTAINER MEDIA QUERIES */
-@media screen and (max-width: 425px) {
+/* GAME CONTAINER MEDIA QUERIES */
+/* GAME CONTAINER MEDIA QUERIES */
+
+
+@media (max-width: 768px) {
+
+
+    .stats-info {
+        font-size: 1em;
+        /* height: 2em; */
+    }
+
+
+    #game-container {
+        width: 80%;
+        max-height: auto;
+        min-height: 300px;
+        background-color: rgb(251, 251, 251);
+
+        margin: 10px 0px;
+    }
+
+
+    #round-tracker-container {
+        height: 50px;
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    #round-tracker-counter {
+        font-size: 15pt;
+    }
+
+    #message-bar {
+
+        font-size: 15pt;
+
+    }
+
+    .answer-button {
+        font-size: 1.2em;
+        min-height: 30px;
+        height: 50px;
+
+    }
+
+
+    .question-container {
+
+        /* height: auto; */
+        max-height: 200px;
+        height: 100px;
+        width: 100%;
+        text-align: center;
+
+    }
 
     #question-text {
-        font-size: 2em;
-        font-weight: 600;
-        padding: 2rem .5rem;
+        font-size: 1.8em;
+        text-align: center;
+        line-height: 1.2;
     }
+
+
+}
+
+
+@media (max-width: 425px) {
 
     .btn-grid {
         display: flex;
@@ -274,15 +405,6 @@ body {
         width: 90%;
     }
 }
-
-
-@media screen and (max-width: 768px) {
-    .stats-info {
-        font-size: 1em;
-        /* height: 2em; */
-    }
-}
-
 
 
 
@@ -316,6 +438,7 @@ body {
 
 @media screen and (max-width: 455px) {
     #message-modal {
+        /* display: flex; */
         width: 90%;
 
     }
@@ -325,7 +448,7 @@ body {
 #modal-text {
     height: auto;
     width: 90%;
-    font-size: 45pt;
+    font-size: clamp(.5rem, 3em, 8vw);
     font-weight: 600;
     text-align: center;
     margin: 0 auto;
@@ -339,7 +462,6 @@ body {
         word-wrap: normal;
     }
 }
-
 
 
 #modal-animation {
@@ -393,7 +515,8 @@ body {
     /* height: auto; */
     color: white;
     width: 100%;
-    font-size: 55pt;
+    /* font-size: 55pt; */
+    font-size: clamp(.5rem, 3em, 8vw);
     font-weight: 600;
     text-align: center;
     margin: 10px auto;
@@ -401,11 +524,12 @@ body {
 
 
 #tally-text {
-    font-size: 2.5rem;
+    font-size: clamp(.5rem, 2.8em, 7vw);
     font-weight: 400;
     text-align: center;
     /* margin-top: 8px auto 2px auto; */
     padding: 5px;
+    line-height: 1;
 }
 
 
@@ -427,81 +551,4 @@ body {
     color: black;
     border-color: black;
     border: 2px black solid;
-}
-
-
-
-#round-tracker-container {
-    display: grid;
-    grid-template-columns: 30% 70%;
-    flex-direction: row;
-    background-color: rgb(228, 228, 228);
-    height: 70px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    /* justify-content: space-around; */
-    grid-template-areas: "round-tracker-counter message-bar";
-}
-
-#round-tracker-counter {
-    /* border: 1px rgb(249, 127, 127) solid; */
-    color: black;
-    font-size: clamp(.5rem, 1.5em, 8vw);
-    /* margin-right: 10px; */
-    width: auto;
-    /* border: 1px black solid; */
-    flex: 1 0 20%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding-left: 10px;
-    grid-area: "round-tracker-counter";
-}
-
-#message-bar {
-    display: none;
-    color: black;
-    font-size: clamp(.5rem, 1.5em, 8vw);
-    /* flex: 2 0 60%; */
-    justify-content: center;
-    transition-duration: 500ms;
-    text-align: center;
-    height: auto;
-    padding: 10px 0px;
-    grid-area: "message-bar";
-}
-
-
-.blink-message {
-    /* background-color: rgb(64, 212, 62); */
-    animation: blinking 500ms infinite;
-    transition-duration: 500ms;
-}
-
-
-@keyframes blinking {
-    from {
-        background-color: rgb(57, 188, 55);
-    }
-
-    to {
-        background-color: lightgray;
-    }
-
-}
-
-
-#attempt-tracker-counter {
-    /* border: 1px rgb(249, 127, 127) solid; */
-    color: black;
-    font-size: 1.5rem;
-    /* margin-right: 10px; */
-    width: auto;
-    /* border: 1px black solid; */
-    flex: 1 0 20%;
-    text-align: right;
-    justify-content: center;
-    align-items: center;
-    padding-right: 10px;
 }
