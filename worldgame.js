@@ -1,5 +1,5 @@
 // Global vars
-let roundLimit = 2;
+let roundLimit = 5;
 let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
@@ -156,7 +156,7 @@ function serveQuestion() {
   // Show options
   optionButtons.innerHTML = "";
 
-  // Pushes all of the answers fromt he answerArr to the DOM
+  // Pushes all of the answers from the answerArr to the DOM as buttons.
   answerArr.forEach((item) =>
     item === correctAnswer
       ? (optionButtons.innerHTML += `
@@ -169,53 +169,75 @@ function serveQuestion() {
   return questionCount;
 }
 
-console.log(questionCount);
-
 function displayNextbutton() {
   nextButton.style.display = "block";
 }
 
-//Array of prompt message options for when the right answer is chosen.
+//Array of prompt message options for when the incorrect answer is chosen.
 let rightMessage = [
   {
-    message: "Great Job!",
-    animation: `<div style="width:100%;height:0;padding-bottom:98%;position:relative;"><iframe src="https://giphy.com/embed/WTEcIzqMRffRssYJjy" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>`,
-  },
-
-  {
     message: "You are correct!",
-    animation: `<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/QuTOdlwvMl5lHKbpRC" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/eddie-murphy-coming-to-america-QuTOdlwvMl5lHKbpRC">via GIPHY</a></p>`,
+    animation: `<img src="./animations/win-anim/baby-yes.gif" class="animation-media" alt="positive-animaiton"/>`,
   },
 
   {
     message: "Well Done!",
-    animation: `<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/l2Sqir5ZxfoS27EvS" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/loop-blue-celebration-l2Sqir5ZxfoS27EvS">via GIPHY</a></p>`,
+    animation: `<img src="./animations/win-anim/baby-yoda-baby-yoda-dancing.gif" class="animation-media" alt="positive-animaiton"/>`,
   },
 
   {
     message: "Awesome!",
-    animation: `<div style="width:100%;height:0;padding-bottom:83%;position:relative;"><iframe src="https://giphy.com/embed/10YMf6TaREdW35MYJx" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/MickeyMouse-10YMf6TaREdW35MYJx">via GIPHY</a></p>`,
+    animation: `<img src="./animations/win-anim/happy-dancing-2.gif" class="animation-media" alt="positive-animaiton"/>`,
+  },
+  {
+    message: "Awesome!",
+    animation: `<img src= "./animations/win-anim/pointing-that-is-correct-3.gif" class="animation-media" alt="positive-animaiton"/>`,
+  },
+
+  {
+    message: "You are correct!",
+    animation: `<img src="./animations/win-anim/we-play-to-win-snoop-dogg.gif" class="animation-media" alt="positive-animaiton"/>`,
+  },
+
+  {
+    message: "Well Done!",
+    animation: `<img src="./animations/win-anim/win-dwight.gif" class="animation-media" alt="positive-animaiton"/>`,
   },
 ];
 
-//Array of prompt message options for when the wrong answer is chosen.
+//Array of prompt message options for when the incorrect answer is chosen.
 let wrongMessage = [
   {
     message: "That answer was incorrect. Maybe another time.",
-    animation: `<div style="width:100%;height:0;padding-bottom:108%;position:relative;"><iframe src="https://giphy.com/embed/Wq9RLX06zRg4UM42Qf" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/chicken-bro-Wq9RLX06zRg4UM42Qf">via GIPHY</a></p>`,
-  },
-
-  {
-    message: "Wrong Answer. You'll get the next one.",
-    animation: `<div style="width:100%;height:0;padding-bottom:134%;position:relative;"><iframe src="https://giphy.com/embed/eKrgVyZ7zLvJrgZNZn" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/eKrgVyZ7zLvJrgZNZn">via GIPHY</a></p>`,
+    animation: `<img src="./animations/loss-anim/army-soldier.gif" class="animation-media" alt="loss-animaiton"/>`,
   },
 
   {
     message: "Incorrect. Good try though.",
-    animation: `<div style="width:100%;height:0;padding-bottom:77%;position:relative;"><iframe src="https://giphy.com/embed/HKch5zpaH97ck" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/failure-mortal-HKch5zpaH97ck">via GIPHY</a></p>`,
+    animation: `<img src="./animations/loss-anim/eh-nope.gif" class="animation-media" alt="loss-animaiton"/>`,
+  },
+
+  {
+    message: "Almost had it.",
+    animation: `<img src="./animations/loss-anim/fail-soldiers.gif" class="animation-media" alt="loss-animaiton"/>`,
+  },
+
+  {
+    message: "Incorrect. Good try though.",
+    animation: `<img src="./animations/loss-anim/peter-draws-lets-try-again.gif"  class="animation-media" alt="loss-animaiton"/>`,
+  },
+  {
+    message: "Close, but....",
+    animation: `<img src="./animations/loss-anim/simpsons-wrong-answer.gif" class="animation-media" alt="loss-animaiton"/>`,
+  },
+
+  {
+    message: "Almost there, but....",
+    animation: `<img src="./animations/loss-anim/were-gonna-try-this-thing-again-eric-cartman-2.gif"  class="animation-media" alt="loss-animaiton"/>`,
   },
 ];
 
+// Composes message and animations based on answer.
 function generateMessage(messageArr) {
   messageSection.style.display = "block";
   let messageIndex = Math.floor(Math.random() * messageArr.length);
@@ -225,25 +247,31 @@ function generateMessage(messageArr) {
   gameContainer.style.display = "none";
   messageText.innerHTML = `${messageSentence}`;
   messageAnim.innerHTML = `${messageImage}`;
+  console.log(messageAnim.children);
   let thatNode = messageAnim.childNodes[1];
   thatNode.style.display = "none";
+  let finalNode = messageAnim.childNodes[0];
+  finalNode.classList.add("animation-media");
+  console.log(finalNode);
   return;
 }
+
+// This function/sequence of events if the correct answer is selected.
 function rightAnswer() {
   // playSound(rightSound);
   rightAnswerCount += 1;
   displayNextbutton();
   messageSection.style.backgroundColor = "rgb(97, 238, 207)";
-
   generateMessage(rightMessage);
 }
 
+// This function/sequence of events if the incorrect answer is selected.
 function wrongAnswer() {
   // playSound(wrongSound);
   attemptTrack = attemptTrack + 1;
   console.log(attemptTrack);
   wrongAnswerCount += 1;
-
+  // Manages attempts when a wrong answer is selected. Shows correct answer and manages flow.
   if (attemptTrack == maxAttempt) {
     let correctButton = document.getElementById("correct-answer");
     let answerButtons = document.getElementsByClassName("answer-button");
@@ -251,11 +279,12 @@ function wrongAnswer() {
     correctButton.classList.add("blink-button");
     console.log(answerButtons);
 
-    //disable button functions whilst correct as correct answer is highlighted.
+    //Disables button functions whilst correct as correct answer is highlighted.
     for (let i = 0; i < answerButtons.length; i++) {
       answerButtons[i].setAttribute("disabled", "true");
     }
 
+    // Displays final message animation
     setTimeout(
       function () {
         generateMessage(wrongMessage);
@@ -268,6 +297,7 @@ function wrongAnswer() {
 
     displayNextbutton();
   } else {
+    // Controls try again messages.
     messageBar.style.display = "flex";
     messageBar.classList.add("blink-message");
     setTimeout(() => {
@@ -279,7 +309,7 @@ function wrongAnswer() {
 
 // function tryAgain() {}
 
-console.log(questionCount);
+// console.log(questionCount);
 
 // serveQuestion()
 
@@ -294,10 +324,3 @@ function endGame() {
   let tallyText = document.getElementById("tally-text");
   tallyText.innerHTML = `You answered <em>${questionCount}</em> questions.<br>Your Success Rate was <em>${endRatioCal}%.</em>`;
 }
-
-//Final Touches//
-//Round Counter
-//Ecape / Return Button
-//Add Arrows to buttons for added flow
-/// Complete Resposive -
-/// MOVE ON FROM HERE AND LEAVE OTHER CHANGES FOR VERSION 3.0.

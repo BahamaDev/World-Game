@@ -37,7 +37,7 @@ body {
 
 #game-header {
     text-align: center;
-    font-size: clamp(1rem, 7rem, 15vw);
+    font-size: clamp(1rem, 7rem, 18vw);
     color: rgb(255, 196, 0);
     text-shadow: 2px 2px 6px black;
     letter-spacing: 10px;
@@ -225,17 +225,20 @@ body {
     display: flex;
     font-weight: 600;
     height: auto;
-    min-height: 200px;
+    min-height: 100px;
+    max-height: 200px;
     width: 95%;
     background-color: rgb(255, 207, 51);
-    text-align: center;
-    padding: 2px 2px;
+    /* text-align: center; */
+    padding: 5px 5px;
     align-items: center;
+    justify-content: center;
 }
 
 #question-text {
-    font-size: 2.2em;
+    font-size: clamp(1em, 2em, 10vw);
     text-align: center;
+    justify-items: center;
 }
 
 
@@ -256,7 +259,7 @@ body {
 
 .answer-button {
     background-color: red;
-    font-size: large;
+    font-size: clamp(.5em 1.5rem 20pt);
     font-weight: bold;
     font-size: 20pt;
     min-height: 50px;
@@ -281,7 +284,7 @@ body {
 
 .blink-button {
     background-color: rgb(64, 212, 62);
-    animation: blinking 800ms ease-in-out 4s;
+    animation: blinking 800ms ease-in-out infinite;
     color: black;
     border: 2px solid;
 }
@@ -365,12 +368,12 @@ body {
 
     }
 
-    .answer-button {
+    /* .answer-button {
         font-size: 1.2em;
         min-height: 30px;
         height: 50px;
 
-    }
+    } */
 
 
     .question-container {
@@ -413,17 +416,35 @@ body {
 /* >>>>>>>>>MESSAGE MODAL>>>>>>>>> */
 
 
-#message-modal {
+/* #message-modal {
     background-color: rgb(97, 238, 207);
     display: flex;
     max-width: 800px;
     width: 60%;
     min-height: 300px;
+    max-height: 500px;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     animation-name: get-in;
     animation-duration: .5s;
+} */
+
+#message-modal {
+    background-color: rgb(97, 238, 207);
+    display: grid;
+    max-width: 800px;
+    width: 60%;
+    min-width: fit-content;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    animation-name: get-in;
+    animation-duration: .5s;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 50% auto;
+    grid-template-areas: "modal-text", "modal-animaton", "next-button";
+    padding: 5px 5px;
 }
 
 @keyframes get-in {
@@ -436,42 +457,38 @@ body {
     }
 }
 
-@media screen and (max-width: 455px) {
-    #message-modal {
-        /* display: flex; */
-        width: 90%;
-
-    }
-}
-
 
 #modal-text {
-    height: auto;
+    display: flex;
+    min-height: 100px;
     width: 90%;
-    font-size: clamp(.5rem, 3em, 8vw);
+    font-size: clamp(.5rem, 3em, 5vw);
     font-weight: 600;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     line-height: 1;
     padding-top: 10px;
 }
 
-@media screen and (max-width: 768px) {
-    #modal-text {
-        font-size: 30pt;
-        word-wrap: normal;
-    }
-}
-
-
 #modal-animation {
     display: flex;
-    border: 8px white solid;
-    width: 60%;
-    max-height: fit-content;
-    object-fit: contain;
-    margin: 10px auto;
+    /* border: 15px white solid; */
+    width: auto;
+    max-height: 60%;
+    margin: 20px auto;
     pointer-events: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.animation-media {
+    display: flex;
+    border: 7px rgb(255, 255, 255) solid;
+    max-height: 250px;
+    width: auto;
+    object-fit: contain;
 }
 
 
@@ -495,6 +512,44 @@ body {
     border: 2px black solid;
 }
 
+/* Message Modal Media Queries */
+/* Message Modal Media Queries */
+/* Message Modal Media Queries */
+
+@media screen and (max-width: 768px) {
+    #modal-text {
+        font-size: 30pt;
+        word-wrap: normal;
+    }
+
+
+
+
+
+}
+
+@media screen and (max-width: 455px) {
+    #message-modal {
+        /* display: flex; */
+        /* width: 90%; */
+
+    }
+
+
+    .animation-media {
+
+        max-height: 150px;
+
+    }
+
+
+
+}
+
+
+
+/* Tally Modal */
+/* Tally Modal */
 
 #tally-modal {
     /* background-color: rgb(97, 238, 207); */
