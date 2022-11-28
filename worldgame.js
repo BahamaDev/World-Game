@@ -33,21 +33,32 @@ let rightSound = "./audio-files/Achieved.mp3";
 let wrongSound = "./audio-files/WRONG BUZZER 6.wav";
 let tallysound = "./audio-files/Pull Slot.mp3";
 let soundbtn = document.getElementById("sound-btn");
-// soundbtn.addEventListener("click", playbgAudio);
+soundbtn.addEventListener("click", playbgAudio);
 
-// function playSound(src) {
-//   // e.preventDefault();
-//   let audio = document.getElementById("audio-element");
-//   audio.src = src;
-//   audio.play();
-//   audio.volume = 0.3;
-// }
-// function playbgAudio() {
-//   // e.preventDefault();
-//   let audio = document.getElementById("bgaudio");
-//   audio.play();
-//   audio.volume = 0.3;
-// }
+function playSound(src) {
+  // e.preventDefault();
+  let audio = document.getElementById("audio-element");
+  audio.src = src;
+  audio.play();
+  audio.volume = 0.3;
+}
+
+let bgAudioPlaying = 0;
+
+function playbgAudio() {
+  // e.preventDefault();
+  let audio = document.getElementById("bgaudio");
+  if (bgAudioPlaying == 0) {
+    audio.play();
+    audio.volume = 0.3;
+    // console.log("bg audio playing");
+    bgAudioPlaying = 1;
+  } else {
+    bgAudioPlaying = 0;
+    audio.pause();
+    // console.log("bg audio paused");
+  }
+}
 
 //Enables initial actions and display values in the game.
 function bindEvents() {
@@ -258,7 +269,7 @@ function generateMessage(messageArr) {
 
 // This function/sequence of events if the correct answer is selected.
 function rightAnswer() {
-  // playSound(rightSound);
+  playSound(rightSound);
   rightAnswerCount += 1;
   displayNextbutton();
   messageSection.style.backgroundColor = "rgb(97, 238, 207)";
@@ -267,7 +278,7 @@ function rightAnswer() {
 
 // This function/sequence of events if the incorrect answer is selected.
 function wrongAnswer() {
-  // playSound(wrongSound);
+  playSound(wrongSound);
   attemptTrack = attemptTrack + 1;
   console.log(attemptTrack);
   wrongAnswerCount += 1;
@@ -307,14 +318,8 @@ function wrongAnswer() {
   }
 }
 
-// function tryAgain() {}
-
-// console.log(questionCount);
-
-// serveQuestion()
-
 function endGame() {
-  // playSound(tallysound);
+  playSound(tallysound);
   let endRatioCal = Math.floor((rightAnswerCount / questionCount) * 100);
   gameContainer.style.display = "none";
   welcomeScreen.style.display = "none";
