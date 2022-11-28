@@ -44,13 +44,17 @@ function playSound(src) {
 }
 
 let bgAudioPlaying = 0;
+function bgAudioVolume(a, b = 0.1) {
+  console.log(a);
+  return a;
+}
 
 function playbgAudio() {
   // e.preventDefault();
   let audio = document.getElementById("bgaudio");
   if (bgAudioPlaying == 0) {
     audio.play();
-    audio.volume = 0.3;
+    // audio.volume = bgAudioVolume/ 1000;
     // console.log("bg audio playing");
     bgAudioPlaying = 1;
   } else {
@@ -58,6 +62,17 @@ function playbgAudio() {
     audio.pause();
     // console.log("bg audio paused");
   }
+}
+
+function volumeControl() {
+  let slider = document.querySelector(".slider input");
+  slider.oninput = function () {
+    progressBar = document.querySelector(".slider progress");
+    progressBar.value = slider.value;
+    sliderValue = document.querySelector(".sliderValue");
+    sliderValue.innerHTML = slider.value;
+    bgAudioVolume(slider.value);
+  };
 }
 
 //Enables initial actions and display values in the game.
@@ -68,6 +83,7 @@ function bindEvents() {
   console.log("bind Events Successful");
   gameContainer.style.display = "none";
   messageSection.style.display = "none";
+  volumeControl();
 }
 bindEvents();
 // playSound(bg);

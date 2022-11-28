@@ -630,7 +630,7 @@ body {
 
 .slider {
     position: relative;
-    width: 300px;
+    width: 200px;
     height: 8px;
     display: flex;
 }
@@ -639,7 +639,7 @@ body {
     position: absolute;
     left: -2px;
     top: 0;
-    width: 304px;
+    width: 204px;
     height: 8px;
     -webkit-appearance: none;
     background: transparent;
@@ -663,11 +663,26 @@ body {
 
 .slider progress {
 
-    width: 300px;
+    width: 200px;
     height: 8px;
     -webkit-appearance: none;
     position: absolute;
     border-radius: 5px;
     overflow: hidden;
+}
 
+
+.slider progress::-webkit-progress-bar {
+    background: #f0f0f0;
+}
+
+.slider progress::-webkit-progress-value {
+    background: rgb(0, 157, 255)
+}
+
+.sliderValue {
+    width: 28px;
+    height: 20px;
+    margin-left: 10px;
+    text-align: center;
 }
