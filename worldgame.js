@@ -34,6 +34,11 @@ let wrongSound = "./audio-files/WRONG BUZZER 6.wav";
 let tallysound = "./audio-files/Pull Slot.mp3";
 let soundbtn = document.getElementById("sound-btn");
 soundbtn.addEventListener("click", playbgAudio);
+let slider = document.querySelector(".slider input");
+let progressBar = document.querySelector(".slider progress");
+let sliderDigits = document.querySelector(".sliderDigits");
+let bgAudioPlaying = 0;
+let audio = document.getElementById("bgaudio");
 
 function playSound(src) {
   // e.preventDefault();
@@ -43,35 +48,28 @@ function playSound(src) {
   audio.volume = 0.3;
 }
 
-let bgAudioPlaying = 0;
-function bgAudioVolume(a, b = 0.1) {
-  console.log(a);
-  return a;
-}
-
+// Plays and mutes background audio.
 function playbgAudio() {
   // e.preventDefault();
-  let audio = document.getElementById("bgaudio");
   if (bgAudioPlaying == 0) {
     audio.play();
-    // audio.volume = bgAudioVolume/ 1000;
-    // console.log("bg audio playing");
+    console.log("audio volume is", audio.volume);
+    console.log("bg audio playing");
     bgAudioPlaying = 1;
   } else {
     bgAudioPlaying = 0;
     audio.pause();
-    // console.log("bg audio paused");
+    console.log("bg audio paused");
   }
 }
 
+// Translates slider input to control volume.
 function volumeControl() {
-  let slider = document.querySelector(".slider input");
   slider.oninput = function () {
-    progressBar = document.querySelector(".slider progress");
     progressBar.value = slider.value;
-    sliderValue = document.querySelector(".sliderValue");
-    sliderValue.innerHTML = slider.value;
-    bgAudioVolume(slider.value);
+    sliderDigits.innerHTML = slider.value;
+    console.log(slider.value);
+    audio.volume = slider.value / 100;
   };
 }
 
