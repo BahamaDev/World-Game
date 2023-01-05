@@ -620,6 +620,11 @@ body {
     padding: 5px;
 }
 
+#sound-icon {
+    height: 20px;
+
+}
+
 .slider-cont {
     box-shadow: 0 1px 10px 0 rgb(184, 187, 188);
     padding: 5px;

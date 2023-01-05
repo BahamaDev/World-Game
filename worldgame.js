@@ -39,6 +39,7 @@ let progressBar = document.querySelector(".slider progress");
 let sliderDigits = document.querySelector(".sliderDigits");
 let bgAudioPlaying = 0;
 let audio = document.getElementById("bgaudio");
+let soundIcon = document.getElementById("sound-icon");
 
 function playSound(src) {
   // e.preventDefault();
@@ -53,11 +54,12 @@ function playbgAudio() {
   // e.preventDefault();
   if (bgAudioPlaying == 0) {
     audio.play();
-    console.log("audio volume is", audio.volume);
+    soundIcon.src = "icons/volume-high-solid.svg";
     console.log("bg audio playing");
     bgAudioPlaying = 1;
   } else {
     bgAudioPlaying = 0;
+    soundIcon.src = "icons/volume-xmark-solid.svg";
     audio.pause();
     console.log("bg audio paused");
   }
