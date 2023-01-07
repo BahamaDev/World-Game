@@ -1,5 +1,5 @@
 // Global vars
-let roundLimit = 10;
+let roundLimit = 5;
 let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
@@ -84,7 +84,7 @@ function bindEvents() {
   gameContainer.style.display = "none";
   messageSection.style.display = "none";
   volumeControl();
-  // audio.play();
+  audio.play();
 }
 bindEvents();
 
