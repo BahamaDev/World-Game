@@ -1,5 +1,5 @@
 // Global vars
-let roundLimit = 5;
+let roundLimit = 10;
 let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
@@ -84,9 +84,9 @@ function bindEvents() {
   gameContainer.style.display = "none";
   messageSection.style.display = "none";
   volumeControl();
+  // audio.play();
 }
 bindEvents();
-// playSound(bg);
 
 // Checks the current round against the roundLimit, and ends the game once they match.
 function gameControl() {

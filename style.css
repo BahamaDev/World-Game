@@ -24,6 +24,7 @@ body {
 
 
 .header-container {
+
     display: flex;
     min-height: 200px;
     height: auto;
@@ -608,22 +609,52 @@ body {
     border: 2px black solid;
 }
 
+#sound-section {
+    width: 100vw;
+    height: auto;
+    /* border: 10px green solid; */
+    padding: 0px;
+    margin: 0px;
+
+
+}
+
 
 #sound-control {
-    background-color: pink;
-    width: 700px;
+    /* background-color: pink; */
+
+    width: auto;
     height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 5px;
+    float: right;
+    padding-right: 20px;
 }
+
+
+
+#sound-btn {
+    background-color: transparent;
+    border: none;
+}
+
 
 #sound-icon {
     height: 20px;
+    /* background-color: greenyellow */
+    border: none;
+    cursor: pointer;
+
 
 }
+
+/* #sound-icon:hover #slider-cont {
+    opacity: 0.1;
+
+} */
 
 .slider-cont {
     box-shadow: 0 1px 10px 0 rgb(184, 187, 188);
@@ -631,11 +662,12 @@ body {
     border-radius: 50px;
     display: flex;
     align-items: center;
+    /* opacity: .1; */
 }
 
 .slider {
     position: relative;
-    width: 200px;
+    width: 100px;
     height: 8px;
     display: flex;
 }
@@ -644,7 +676,7 @@ body {
     position: absolute;
     left: -2px;
     top: 0;
-    width: 204px;
+    width: 104px;
     height: 8px;
     -webkit-appearance: none;
     background: transparent;
@@ -668,7 +700,7 @@ body {
 
 .slider progress {
 
-    width: 200px;
+    width: 100px;
     height: 8px;
     -webkit-appearance: none;
     position: absolute;
