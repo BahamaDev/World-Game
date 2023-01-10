@@ -1,5 +1,5 @@
 // Global vars
-let roundLimit = 5;
+let roundLimit = 10;
 let questionCount = 1;
 let rightAnswerCount = 0;
 let wrongAnswerCount = 0;
