@@ -615,8 +615,7 @@ body {
     /* border: 10px green solid; */
     padding: 0px;
     margin: 0px;
-
-
+    border: 1px red solid;
 }
 
 
@@ -638,7 +637,6 @@ body {
     opacity: 1;
 
 }
-
 
 
 #sound-btn {
@@ -721,8 +719,15 @@ body {
 }
 
 .sliderDigits {
+    
     width: 28px;
     height: 20px;
     margin-left: 10px;
     text-align: center;
 }
+
+
+@media screen {
+    
+}
+
